@@ -105,8 +105,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
       {/* Name row */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">First Name *</label>
+          <label htmlFor="lead-firstName" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">First Name *</label>
           <input
+            id="lead-firstName"
             type="text"
             name="firstName"
             required
@@ -117,8 +118,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Last Name *</label>
+          <label htmlFor="lead-lastName" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Last Name *</label>
           <input
+            id="lead-lastName"
             type="text"
             name="lastName"
             required
@@ -133,8 +135,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
       {/* Contact */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Email *</label>
+          <label htmlFor="lead-email" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Email *</label>
           <input
+            id="lead-email"
             type="email"
             name="email"
             required
@@ -145,8 +148,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Phone</label>
+          <label htmlFor="lead-phone" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Phone</label>
           <input
+            id="lead-phone"
             type="tel"
             name="phone"
             value={form.phone || ''}
@@ -160,8 +164,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
       {/* Dates */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Check-in Date *</label>
+          <label htmlFor="lead-checkIn" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Check-in Date *</label>
           <input
+            id="lead-checkIn"
             type="date"
             name="checkIn"
             required
@@ -172,8 +177,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
           />
         </div>
         <div>
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Check-out Date *</label>
+          <label htmlFor="lead-checkOut" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Check-out Date *</label>
           <input
+            id="lead-checkOut"
             type="date"
             name="checkOut"
             required
@@ -188,8 +194,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
       {/* Villa & Guests */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         <div className="sm:col-span-1">
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Villa Preference</label>
+          <label htmlFor="lead-villa" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Villa Preference</label>
           <select
+            id="lead-villa"
             name="villaPreference"
             value={form.villaPreference || ''}
             onChange={handleChange}
@@ -202,8 +209,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
           </select>
         </div>
         <div>
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Adults</label>
+          <label htmlFor="lead-adults" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Adults</label>
           <select
+            id="lead-adults"
             name="adults"
             value={form.adults}
             onChange={handleChange}
@@ -215,8 +223,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
           </select>
         </div>
         <div>
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Children</label>
+          <label htmlFor="lead-children" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Children</label>
           <select
+            id="lead-children"
             name="children"
             value={form.children}
             onChange={handleChange}
@@ -232,8 +241,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
       {/* Special Requests */}
       {!compact && (
         <div>
-          <label className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Special Requests</label>
+          <label htmlFor="lead-requests" className="block text-xs text-gray-500 uppercase tracking-wider mb-1.5">Special Requests</label>
           <textarea
+            id="lead-requests"
             name="specialRequests"
             value={form.specialRequests || ''}
             onChange={handleChange}

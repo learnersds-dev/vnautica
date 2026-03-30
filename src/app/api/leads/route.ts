@@ -23,14 +23,28 @@ export async function POST(request: Request) {
       source: body.utm_source || 'website',
     });
 
-    // Get current rate for the villa
-    const villaId = body.villaPreference || 'beach-villa';
-    const villa = villas.find((v) => v.id === villaId);
-    const rate = getVillaRate(villaId);
-
-    // Calculate stay details
+    // Validate dates
     const checkInDate = new Date(body.checkIn);
     const checkOutDate = new Date(body.checkOut);
+    if (isNaN(checkInDate.getTime()) || isNaN(checkOutDate.getTime())) {
+      return NextResponse.json({ error: 'Invalid date format' }, { status: 400 });
+    }
+    if (checkOutDate <= checkInDate) {
+      return NextResponse.json({ error: 'Check-out must be after check-in' }, { status: 400 });
+    }
+
+    // Validate villa preference
+    const villaId = body.villaPreference || 'beach-villa';
+    const villa = villas.find((v) => v.id === villaId);
+    if (body.villaPreference && !villa) {
+      return NextResponse.json({ error: 'Invalid villa selection' }, { status: 400 });
+    }
+
+    // Validate guest counts
+    const adults = Math.min(Math.max(1, Number(body.adults) || 2), 10);
+    const children = Math.min(Math.max(0, Number(body.children) || 0), 6);
+
+    const rate = getVillaRate(villaId);
     const nights = Math.max(1, Math.ceil(
       (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 60 * 60 * 24)
     ));
@@ -42,8 +56,8 @@ export async function POST(request: Request) {
       villaName: villa?.name || 'Villa (to be confirmed)',
       checkIn: body.checkIn,
       checkOut: body.checkOut,
-      adults: body.adults || 2,
-      children: body.children || 0,
+      adults,
+      children,
       ratePerNight: rate?.discountedRate || 0,
       totalAmount: (rate?.discountedRate || 0) * nights,
       currency: rate?.currency || 'USD',

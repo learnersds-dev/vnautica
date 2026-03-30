@@ -14,6 +14,10 @@ const transporter = nodemailer.createTransport({
 const FROM_NAME = 'Villa Nautica Reservations';
 const FROM_EMAIL = process.env.SMTP_FROM || 'reservations@villanautica.com';
 
+function escapeHtml(str: string): string {
+  return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
 // ─── Email Templates ─────────────────────────────────────
 
 function baseTemplate(content: string): string {
@@ -69,7 +73,7 @@ function baseTemplate(content: string): string {
 
 function enquiryConfirmationTemplate(customer: Customer, booking: Booking): string {
   return baseTemplate(`
-    <h2>Thank You, ${customer.firstName}</h2>
+    <h2>Thank You, ${escapeHtml(customer.firstName)}</h2>
     <p>We're delighted you're considering Villa Nautica for your Maldives escape. Your enquiry has been received and our dedicated reservation specialist will craft a personalized proposal for you.</p>
 
     <div class="divider"></div>
@@ -108,7 +112,7 @@ function enquiryConfirmationTemplate(customer: Customer, booking: Booking): stri
 
 function followUpTemplate(customer: Customer): string {
   return baseTemplate(`
-    <h2>Hello ${customer.firstName},</h2>
+    <h2>Hello ${escapeHtml(customer.firstName)},</h2>
     <p>We noticed you recently explored Villa Nautica and wanted to make sure we haven't missed your enquiry.</p>
     <p>As a special gesture, we'd like to extend an <strong>exclusive offer</strong>:</p>
 
@@ -131,19 +135,19 @@ function followUpTemplate(customer: Customer): string {
 // ─── Template: Internal Notification ─────────────────────
 
 function internalNotificationTemplate(customer: Customer, booking: Booking): string {
-  return `
-    <h3>New Lead: ${customer.firstName} ${customer.lastName}</h3>
-    <p><strong>Email:</strong> ${customer.email}</p>
-    <p><strong>Phone:</strong> ${customer.phone || 'Not provided'}</p>
-    <p><strong>Source:</strong> ${customer.source}${customer.tags.includes('google-ads') ? ' (Google Ads)' : ''}</p>
-    <p><strong>Villa:</strong> ${booking.villaName}</p>
-    <p><strong>Dates:</strong> ${booking.checkIn} — ${booking.checkOut}</p>
+  return baseTemplate(`
+    <h3>New Lead: ${escapeHtml(customer.firstName)} ${escapeHtml(customer.lastName)}</h3>
+    <p><strong>Email:</strong> ${escapeHtml(customer.email)}</p>
+    <p><strong>Phone:</strong> ${escapeHtml(customer.phone || 'Not provided')}</p>
+    <p><strong>Source:</strong> ${escapeHtml(customer.source)}${customer.tags.includes('google-ads') ? ' (Google Ads)' : ''}</p>
+    <p><strong>Villa:</strong> ${escapeHtml(booking.villaName)}</p>
+    <p><strong>Dates:</strong> ${escapeHtml(booking.checkIn)} — ${escapeHtml(booking.checkOut)}</p>
     <p><strong>Guests:</strong> ${booking.adults} adults, ${booking.children} children</p>
-    <p><strong>Special Requests:</strong> ${booking.specialRequests || 'None'}</p>
+    <p><strong>Special Requests:</strong> ${escapeHtml(booking.specialRequests || 'None')}</p>
     <p><strong>Estimated Rate:</strong> $${booking.ratePerNight}/night</p>
-    ${booking.gclid ? `<p><strong>GCLID:</strong> ${booking.gclid}</p>` : ''}
-    ${booking.utm_campaign ? `<p><strong>Campaign:</strong> ${booking.utm_campaign}</p>` : ''}
-  `;
+    ${booking.gclid ? `<p><strong>GCLID:</strong> ${escapeHtml(booking.gclid)}</p>` : ''}
+    ${booking.utm_campaign ? `<p><strong>Campaign:</strong> ${escapeHtml(booking.utm_campaign)}</p>` : ''}
+  `);
 }
 
 // ─── Send Functions ──────────────────────────────────────

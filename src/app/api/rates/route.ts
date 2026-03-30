@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import { getAllRates, connectKafkaConsumer } from '@/lib/kafka-rates';
 
-// Initialize Kafka consumer on first import (server-side)
-let kafkaInitialized = false;
+// Initialize Kafka consumer once using a Promise singleton
+let kafkaInitPromise: Promise<void> | null = null;
 
-async function ensureKafka() {
-  if (!kafkaInitialized) {
-    kafkaInitialized = true;
-    await connectKafkaConsumer();
+function ensureKafka() {
+  if (!kafkaInitPromise) {
+    kafkaInitPromise = connectKafkaConsumer();
   }
+  return kafkaInitPromise;
 }
 
 export async function GET() {
