@@ -5,6 +5,7 @@ import { Send, Loader2, CheckCircle } from 'lucide-react';
 import Button from '@/components/ui/Button';
 import { LeadFormData } from '@/types';
 import { villas } from '@/lib/villas-data';
+import { captureUTMParams, submitLead } from '@/lib/lead-submission';
 
 interface LeadFormProps {
   preselectedVilla?: string;
@@ -25,16 +26,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
 
   // Capture Google Ads UTM params
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    const params = new URLSearchParams(window.location.search);
-    setForm((prev) => ({
-      ...prev,
-      gclid: params.get('gclid') || undefined,
-      utm_source: params.get('utm_source') || source,
-      utm_medium: params.get('utm_medium') || undefined,
-      utm_campaign: params.get('utm_campaign') || undefined,
-      utm_term: params.get('utm_term') || undefined,
-    }));
+    setForm((prev) => ({ ...prev, ...captureUTMParams(source) }));
   }, [source]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -49,26 +41,9 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
     e.preventDefault();
     setSubmitting(true);
 
-    // POST to backend CRM
     try {
-      const res = await fetch('/api/leads', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-
-      if (!res.ok) throw new Error(`Server error: ${res.status}`);
-
-      // Fire Google Ads conversion tracking
-      if (typeof window !== 'undefined' && 'gtag' in window) {
-        const w = window as unknown as { gtag: (...args: unknown[]) => void };
-        w.gtag('event', 'conversion', {
-          send_to: 'AW-XXXXXXXXX/XXXXXXXX',
-          value: 1.0,
-          currency: 'USD',
-        });
-      }
-
+      const result = await submitLead(form);
+      if (!result.success) throw new Error(result.error);
       setSubmitting(false);
       setSubmitted(true);
     } catch (err) {

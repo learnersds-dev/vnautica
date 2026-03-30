@@ -326,6 +326,44 @@ body {
   box-shadow: 0 0 15px rgba(201, 169, 110, 0.1);
 }
 
+/* Booking Wizard — glass panel */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 16px 64px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Booking Wizard — villa selection cards */
+.liquid-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.liquid-card:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-4px);
+}
+.liquid-card.selected {
+  border-color: rgba(201, 169, 110, 0.6);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15), 0 0 20px rgba(201, 169, 110, 0.12);
+  transform: scale(1.02);
+}
+
+/* Hide scrollbar for wizard villa slider */
+.wizard-scroll-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.wizard-scroll-hide::-webkit-scrollbar {
+  display: none;
+}
+
 /* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;

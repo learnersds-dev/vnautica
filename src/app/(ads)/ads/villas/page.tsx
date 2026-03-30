@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { Anchor, Star, Phone, Shield, Clock, Plane, Check, RefreshCw } from 'lucide-react';
 import { villas } from '@/lib/villas-data';
+import { villaImages as sharedVillaImages } from '@/lib/villa-images';
 import { useRates } from '@/hooks/useRates';
 import RateDisplay from '@/components/ui/RateDisplay';
 import LeadForm from '@/components/booking/LeadForm';
@@ -29,12 +30,7 @@ const trustSignals = [
   '20 Minutes from Malé Airport',
 ];
 
-const villaImages: Record<string, string> = {
-  'one-bed-ocean-suite-pool': 'https://hotelcms-production.imgix.net/villaresorts.com/wp-content/uploads/2022/11/Royal-Island-Two-Bedroom-Beach-Pool-Residence-Aerial-Large.jpg?w=600&q=70&auto=format',
-  'sunset-deluxe-beach-pool': 'https://hotelcms-production.imgix.net/villaresorts.com/wp-content/uploads/2022/11/Villa-Nautica-Deluxe-Beach-Pool-Villa-Bedroom-Large.jpg?w=600&q=70&auto=format',
-  'water-villa-whirlpool': 'https://villlaresorts.imgix.net/wp-content/uploads/2022/11/Villa-Nautica-Main-Pool-Sunset-Large.jpg?w=600&q=70&auto=format',
-  'beach-villa': 'https://hotelcms-production.imgix.net/villaresorts.com/wp-content/uploads/2023/01/Villa-Park-0115_1600x900.jpg?w=600&q=70&auto=format',
-};
+const villaImages = sharedVillaImages;
 
 // Show top 4 most popular villas for the ads page
 const featuredVillaIds = [
