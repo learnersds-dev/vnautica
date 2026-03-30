@@ -5,18 +5,19 @@ import LeadForm from '@/components/booking/LeadForm';
 
 export default function ContactPage() {
   return (
-    <div className="pt-32 pb-20">
+    <div className="pt-32 pb-0">
       {/* Header */}
-      <section className="bg-navy text-white py-16">
+      <section className="aurora-bg py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <span className="text-gold text-xs uppercase tracking-[0.3em]">Contact</span>
-          <h1 className="font-serif text-4xl md:text-5xl mt-3 mb-4">Contact Our Booking Team</h1>
-          <p className="text-white/60 text-lg">
+          <h1 className="font-serif text-4xl md:text-6xl text-white mt-3 mb-4">Contact Our Booking Team</h1>
+          <p className="text-white/50 text-lg">
             Reservations & Sales — dedicated booking partner for Villa Nautica Maldives.
           </p>
         </div>
       </section>
 
+      <div className="aurora-bg-light">
       <div className="max-w-6xl mx-auto px-6 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Contact Info */}
@@ -25,7 +26,7 @@ export default function ContactPage() {
 
             <div className="space-y-6">
               <div className="flex items-start gap-4">
-                <div className="bg-sand-light p-3 rounded-sm">
+                <div className="bg-white/60 p-3 rounded-xl">
                   <Phone className="w-5 h-5 text-gold" />
                 </div>
                 <div>
@@ -38,7 +39,7 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="bg-sand-light p-3 rounded-sm">
+                <div className="bg-white/60 p-3 rounded-xl">
                   <MessageCircle className="w-5 h-5 text-gold" />
                 </div>
                 <div>
@@ -51,7 +52,7 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="bg-sand-light p-3 rounded-sm">
+                <div className="bg-white/60 p-3 rounded-xl">
                   <Mail className="w-5 h-5 text-gold" />
                 </div>
                 <div>
@@ -64,7 +65,7 @@ export default function ContactPage() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="bg-sand-light p-3 rounded-sm">
+                <div className="bg-white/60 p-3 rounded-xl">
                   <MapPin className="w-5 h-5 text-gold" />
                 </div>
                 <div>
@@ -79,7 +80,7 @@ export default function ContactPage() {
             </div>
 
             {/* R&S Disclosure */}
-            <div className="mt-10 p-4 bg-navy rounded-sm">
+            <div className="mt-10 p-4 bg-navy rounded-xl">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-cyan-400 text-xs font-semibold">Reservations & Sales</span>
                 <span className="text-white/30 text-xs">— Official Booking Partner</span>
@@ -92,10 +93,11 @@ export default function ContactPage() {
           </div>
 
           {/* Enquiry Form */}
-          <div className="bg-white border border-gray-100 rounded-sm shadow-lg p-8">
+          <div className="glass-card-light rounded-xl shadow-lg p-8">
             <LeadForm source="contact-page" />
           </div>
         </div>
+      </div>
       </div>
     </div>
   );

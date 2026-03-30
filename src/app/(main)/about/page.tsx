@@ -2,26 +2,18 @@ import { Anchor, MapPin, Plane, Award, Waves } from 'lucide-react';
 
 export default function AboutPage() {
   return (
-    <div className="pt-32 pb-20">
+    <div className="pt-32 pb-0">
       {/* Hero */}
-      <section className="relative h-[400px] overflow-hidden mb-16">
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url('https://hotelcms-production.imgix.net/villaresorts.com/wp-content/uploads/2022/12/Villa-Nautica.jpg?w=1600&q=80&auto=format')`,
-          }}
-        />
-        <div className="absolute inset-0 bg-navy-dark/60" />
-        <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-6">
-          <div className="glass px-10 py-8 rounded-sm">
-            <span className="text-gold text-xs uppercase tracking-[0.3em]">About the Resort</span>
-            <h1 className="font-serif text-5xl mt-3">Villa Nautica</h1>
-            <p className="text-white/60 text-sm mt-3">Paradise Island, North Malé Atoll, Maldives</p>
-          </div>
+      <section className="aurora-bg py-20">
+        <div className="max-w-4xl mx-auto px-6 text-center">
+          <span className="text-gold text-xs uppercase tracking-[0.3em]">About the Resort</span>
+          <h1 className="font-serif text-5xl md:text-6xl text-white mt-3 mb-4">Villa Nautica</h1>
+          <p className="text-white/50 text-lg">Paradise Island, North Malé Atoll, Maldives</p>
         </div>
       </section>
 
-      <div className="max-w-4xl mx-auto px-6 space-y-16">
+      <div className="aurora-bg-light">
+      <div className="max-w-4xl mx-auto px-6 py-16 space-y-16">
         {/* Story */}
         <section>
           <h2 className="font-serif text-3xl text-navy mb-6">The Yacht-Life Experience</h2>
@@ -46,7 +38,7 @@ export default function AboutPage() {
             { icon: Plane, label: '20 Min Transfer', detail: 'From Malé Airport' },
             { icon: Waves, label: 'Araamu Spa', detail: 'Holistic Wellness' },
           ].map((fact) => (
-            <div key={fact.label} className="text-center p-6 glass-card-light rounded-sm">
+            <div key={fact.label} className="text-center p-6 glass-card-light rounded-xl">
               <fact.icon className="w-8 h-8 text-gold mx-auto mb-3" />
               <div className="text-navy font-semibold text-sm">{fact.label}</div>
               <div className="text-gray-500 text-xs mt-1">{fact.detail}</div>
@@ -70,7 +62,7 @@ export default function AboutPage() {
         </section>
 
         {/* R&S Disclosure */}
-        <section className="glass p-6 rounded-sm bg-navy">
+        <section className="glass p-6 rounded-xl bg-navy">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-cyan-400 text-xs font-semibold">Reservations & Sales</span>
             <span className="text-white/30 text-xs">— Official Booking Partner</span>
@@ -80,6 +72,7 @@ export default function AboutPage() {
             All rates, availability, and booking services are provided by Reservations & Sales.
           </p>
         </section>
+      </div>
       </div>
     </div>
   );
