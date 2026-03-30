@@ -9,12 +9,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Anchor className="w-6 h-6 text-gold" />
-              <span className="font-serif text-xl font-semibold">Villa Nautica</span>
+            <div>
+              <div className="flex items-center gap-2">
+                <Anchor className="w-6 h-6 text-gold" />
+                <span className="font-serif text-xl font-semibold">Reservations & Sales</span>
+              </div>
+              <p className="text-white/40 text-xs mt-1">Official Booking Partner for Villa Nautica</p>
             </div>
             <p className="text-white/60 text-sm leading-relaxed">
-              Celebrate the glamour of cosmopolitan quayside living at Paradise Island, North Malé Atoll, Maldives.
+              Book Villa Nautica at Paradise Island, North Malé Atoll, Maldives. Save 9% on every villa.
             </p>
             <div className="space-y-2 text-sm text-white/60">
               <div className="flex items-center gap-2">
@@ -49,26 +52,29 @@ export default function Footer() {
           <div>
             <h4 className="font-serif text-gold text-sm uppercase tracking-wider mb-4">Resort</h4>
             <ul className="space-y-2 text-sm text-white/60">
-              <li><Link href="/#dining" className="hover:text-gold transition-colors">Dining</Link></li>
-              <li><Link href="/#spa" className="hover:text-gold transition-colors">Araamu Spa</Link></li>
-              <li><Link href="/#experiences" className="hover:text-gold transition-colors">Experiences</Link></li>
-              <li><Link href="/#" className="hover:text-gold transition-colors">Weddings</Link></li>
-              <li><Link href="/#" className="hover:text-gold transition-colors">Special Offers</Link></li>
+              <li><Link href="/dining" className="hover:text-gold transition-colors">Dining</Link></li>
+              <li><Link href="/spa" className="hover:text-gold transition-colors">Araamu Spa</Link></li>
+              <li><Link href="/experiences" className="hover:text-gold transition-colors">Experiences</Link></li>
+              <li><Link href="/about" className="hover:text-gold transition-colors">About the Resort</Link></li>
             </ul>
           </div>
 
-          {/* Quick Booking */}
+          {/* Newsletter */}
           <div>
-            <h4 className="font-serif text-gold text-sm uppercase tracking-wider mb-4">Quick Enquiry</h4>
-            <p className="text-sm text-white/60 mb-4">
-              Get exclusive rates and personalized travel planning from our dedicated reservation team.
+            <h4 className="font-serif text-gold text-sm uppercase tracking-wider mb-4">Newsletter</h4>
+            <div className="relative mb-3">
+              <input
+                type="email"
+                placeholder="Email Address"
+                className="w-full bg-white/10 border border-white/10 text-white text-sm px-4 py-3 rounded-lg focus:outline-none focus:border-gold/40 placeholder:text-white/30"
+              />
+              <button className="absolute right-2 top-1/2 -translate-y-1/2 text-gold hover:text-gold-light transition-colors p-1">
+                &rarr;
+              </button>
+            </div>
+            <p className="text-[10px] text-white/30 leading-relaxed">
+              Join our inner circle for exclusive island secrets and seasonal escapes.
             </p>
-            <Link
-              href="/villas"
-              className="inline-block bg-gold text-navy font-semibold px-6 py-3 text-sm tracking-wide hover:bg-gold-dark transition-colors"
-            >
-              View Rates & Enquire
-            </Link>
           </div>
         </div>
       </div>
@@ -76,7 +82,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col md:flex-row items-center justify-between text-xs text-white/40">
-          <p>&copy; {new Date().getFullYear()} Villa Nautica Maldives. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Reservations & Sales. Official booking partner for Villa Nautica Maldives.</p>
           <div className="flex gap-4 mt-2 md:mt-0">
             <Link href="#" className="hover:text-gold transition-colors">Privacy Policy</Link>
             <Link href="#" className="hover:text-gold transition-colors">Terms</Link>

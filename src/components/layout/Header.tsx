@@ -6,13 +6,12 @@ import { Menu, X, Phone, Anchor } from 'lucide-react';
 import Button from '@/components/ui/Button';
 
 const navLinks = [
-  { href: '/#villas', label: 'Villas' },
-  { href: '/#experiences', label: 'Experiences' },
-  { href: '/#dining', label: 'Dining' },
-  { href: '/#spa', label: 'Spa' },
+  { href: '/villas', label: 'Villas' },
+  { href: '/experiences', label: 'Experiences' },
+  { href: '/dining', label: 'Dining' },
+  { href: '/spa', label: 'Spa' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
-  { href: '/villas', label: 'Rates & Booking' },
 ];
 
 export default function Header() {
@@ -79,7 +78,7 @@ export default function Header() {
       <header
         className={`fixed left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'top-[28px] bg-white/95 backdrop-blur-md shadow-sm py-3'
+            ? 'top-[28px] glass-light shadow-sm py-3'
             : 'top-[32px] bg-transparent py-5'
         }`}
       >
@@ -147,7 +146,7 @@ export default function Header() {
 
         {/* Mobile Menu */}
         {mobileOpen && (
-          <div className="lg:hidden bg-white/98 backdrop-blur-lg border-t border-gray-100 animate-fade-in">
+          <div className="lg:hidden glass-light border-t border-gray-100 animate-fade-in">
             <div className="max-w-7xl mx-auto px-6 py-6 space-y-4">
               {navLinks.map((link) => (
                 <Link

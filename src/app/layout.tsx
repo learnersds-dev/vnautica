@@ -3,23 +3,23 @@ import Script from 'next/script';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Villa Nautica Maldives | Luxury Resort - Exclusive Rates',
+  title: 'Book Villa Nautica Maldives | Reservations & Sales',
   description:
-    'Experience yacht-life luxury at Villa Nautica, Paradise Island, Maldives. 10 villa categories, 9 dining venues, overwater spa. Book direct for exclusive rates — save 9% on all villas.',
+    'Book luxury villas at Villa Nautica, Paradise Island. Save 9% through Reservations & Sales — official booking partner. Overwater & beach villas, 9 dining venues.',
   keywords: [
-    'Villa Nautica Maldives',
+    'Villa Nautica Maldives booking',
     'Maldives luxury resort',
     'overwater villa Maldives',
     'Paradise Island resort',
     'Maldives honeymoon',
-    'private pool villa Maldives',
+    'book Villa Nautica',
   ],
   openGraph: {
-    title: 'Villa Nautica Maldives | Luxury Resort',
-    description: 'Celebrate the glamour of cosmopolitan quayside living. Exclusive rates — save 9% on direct bookings.',
+    title: 'Book Villa Nautica Maldives | Reservations & Sales',
+    description: 'Save 9% on luxury villas at Villa Nautica through Reservations & Sales — official booking partner.',
     type: 'website',
     locale: 'en_US',
-    siteName: 'Villa Nautica Maldives',
+    siteName: 'Reservations & Sales',
   },
 };
 

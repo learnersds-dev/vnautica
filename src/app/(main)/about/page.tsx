@@ -13,12 +13,10 @@ export default function AboutPage() {
         />
         <div className="absolute inset-0 bg-navy-dark/60" />
         <div className="relative z-10 h-full flex items-center justify-center text-center text-white px-6">
-          <div>
-            <span className="text-gold text-xs uppercase tracking-[0.3em]">About</span>
+          <div className="glass px-10 py-8 rounded-sm">
+            <span className="text-gold text-xs uppercase tracking-[0.3em]">About the Resort</span>
             <h1 className="font-serif text-5xl mt-3">Villa Nautica</h1>
-            <p className="text-white/70 text-lg mt-3 max-w-lg mx-auto">
-              Celebrate the glamour of cosmopolitan quayside living
-            </p>
+            <p className="text-white/60 text-sm mt-3">Paradise Island, North Malé Atoll, Maldives</p>
           </div>
         </div>
       </section>
@@ -29,18 +27,13 @@ export default function AboutPage() {
           <h2 className="font-serif text-3xl text-navy mb-6">The Yacht-Life Experience</h2>
           <div className="text-gray-600 leading-relaxed space-y-4">
             <p>
-              Villa Nautica is more than a resort — it&apos;s a celebration of the seafaring spirit. Set on Paradise Island in the
-              North Malé Atoll, just 20 minutes by speedboat from Velana International Airport, the resort embodies the glamour
-              and excitement of yacht-life living, where every moment is &ldquo;en vogue.&rdquo;
+              Set on Paradise Island in the North Malé Atoll, just 20 minutes by speedboat from Velana International Airport, Villa Nautica embodies the glamour and excitement of yacht-life living.
             </p>
             <p>
-              With 10 distinct villa categories ranging from intimate beach retreats to expansive overwater suites with private pools,
-              Villa Nautica offers a sanctuary for every type of traveller. Nine dining venues — from teppanyaki theatre at Fukuya to
-              sunset Italian at Ristorante al Tramonto — ensure culinary adventures rival the ocean views.
+              The resort features 10 distinct villa categories ranging from intimate beach retreats to expansive overwater suites with private pools, along with nine dining venues offering world-class cuisine.
             </p>
             <p>
-              The resort&apos;s signature experiences — the Crow&apos;s Nest lookout, Captain&apos;s Class nautical training, and the Cocoon
-              Lounge — reflect its unique personality: sophisticated yet playful, luxurious yet welcoming.
+              Signature experiences include the Crow&apos;s Nest lookout, Captain&apos;s Class nautical training, and the Cocoon Lounge — reflecting a personality that is sophisticated yet playful.
             </p>
           </div>
         </section>
@@ -53,7 +46,7 @@ export default function AboutPage() {
             { icon: Plane, label: '20 Min Transfer', detail: 'From Malé Airport' },
             { icon: Waves, label: 'Araamu Spa', detail: 'Holistic Wellness' },
           ].map((fact) => (
-            <div key={fact.label} className="text-center p-6 bg-sand-light rounded-sm">
+            <div key={fact.label} className="text-center p-6 glass-card-light rounded-sm">
               <fact.icon className="w-8 h-8 text-gold mx-auto mb-3" />
               <div className="text-navy font-semibold text-sm">{fact.label}</div>
               <div className="text-gray-500 text-xs mt-1">{fact.detail}</div>
@@ -71,10 +64,21 @@ export default function AboutPage() {
               <p>North Malé Atoll, Republic of Maldives</p>
               <p className="text-sm mt-2">
                 Just 20 minutes by speedboat from Velana International Airport (MLE).
-                Complimentary airport meet-and-greet and speedboat transfer included with direct bookings.
               </p>
             </div>
           </div>
+        </section>
+
+        {/* R&S Disclosure */}
+        <section className="glass p-6 rounded-sm bg-navy">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-cyan-400 text-xs font-semibold">Reservations & Sales</span>
+            <span className="text-white/30 text-xs">— Official Booking Partner</span>
+          </div>
+          <p className="text-white/50 text-xs leading-relaxed">
+            This website is operated by Reservations & Sales, the official booking partner for Villa Nautica Maldives.
+            All rates, availability, and booking services are provided by Reservations & Sales.
+          </p>
         </section>
       </div>
     </div>

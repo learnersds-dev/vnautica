@@ -61,8 +61,8 @@ export default function AdsVillasPage() {
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Anchor className="w-5 h-5 text-gold" />
-            <span className="font-serif text-white text-lg">Villa Nautica</span>
-            <span className="text-white/40 text-xs ml-1">Maldives</span>
+            <span className="font-serif text-white text-lg">Reservations & Sales</span>
+            <span className="text-white/40 text-xs ml-1">for Villa Nautica</span>
           </div>
           <a
             href="tel:+9606641010"
@@ -108,7 +108,7 @@ export default function AdsVillasPage() {
               </h1>
 
               <p className="text-white/70 text-lg mb-6 leading-relaxed max-w-lg">
-                Luxury overwater and beach villas at Villa Nautica, Paradise Island.
+                Book luxury villas at Villa Nautica through Reservations & Sales.
                 Live rates, instant confirmation, complimentary transfers.
               </p>
 
@@ -222,8 +222,8 @@ export default function AdsVillasPage() {
       {/* Minimal Footer */}
       <footer className="bg-navy py-6 px-6 text-center">
         <div className="text-white/40 text-xs space-y-1">
-          <p>Villa Nautica Maldives • Paradise Island, North Malé Atoll</p>
-          <p>&copy; {new Date().getFullYear()} All rights reserved.</p>
+          <p>Reservations & Sales — Official Booking Partner for Villa Nautica</p>
+          <p>&copy; {new Date().getFullYear()} Reservations & Sales. All rights reserved.</p>
         </div>
       </footer>
     </div>

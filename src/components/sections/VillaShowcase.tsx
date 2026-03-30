@@ -30,25 +30,24 @@ const villaImages: Record<string, string> = {
   'beach-villa': 'https://hotelcms-production.imgix.net/villaresorts.com/wp-content/uploads/2023/01/Villa-Park-0115_1600x900.jpg?w=800&q=70&auto=format',
 };
 
-// Show 6 featured villas on the homepage
-const featured = villas.slice(0, 6);
+export default function VillaShowcase({ teaser }: { teaser?: boolean }) {
+  const featured = teaser ? villas.slice(0, 3) : villas.slice(0, 6);
 
-export default function VillaShowcase() {
   return (
-    <section id="villas" className="py-24 lg:py-32 bg-sand-light">
+    <section className="aurora-bg-light py-24 lg:py-32">
       <div className="max-w-7xl mx-auto px-6">
-        {/* Section Header — Apple-style centered */}
+        {/* Section Header */}
         <div className="text-center mb-16 max-w-2xl mx-auto">
           <span className="text-gold text-xs uppercase tracking-[0.3em] font-medium">Accommodation</span>
           <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl text-navy mt-3 mb-5">
-            Your Private Paradise
+            Paradise Found
           </h2>
           <p className="text-gray-500 text-lg leading-relaxed">
-            Ten villa categories, each a masterpiece of nautical-inspired design. From overwater sanctuaries to beachfront retreats, discover your perfect Maldivian escape.
+            Explore handpicked villas with crystal-clear transitions
           </p>
         </div>
 
-        {/* Villa Grid */}
+        {/* Villa Grid — Glass Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featured.map((villa) => {
             const Icon = categoryIcons[villa.category];
@@ -56,10 +55,10 @@ export default function VillaShowcase() {
               <Link
                 key={villa.id}
                 href={`/villas#${villa.id}`}
-                className="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500"
+                className="group glass-card-light rounded-xl overflow-hidden"
               >
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-56 overflow-hidden">
                   <div
                     className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
                     style={{
@@ -68,27 +67,21 @@ export default function VillaShowcase() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent" />
 
-                  {/* Category Badge */}
-                  <div className="absolute top-4 left-4 flex items-center gap-1.5 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-sm">
-                    <Icon className="w-3.5 h-3.5 text-navy" />
-                    <span className="text-xs font-medium text-navy uppercase tracking-wider">
+                  {/* Category + Features badges */}
+                  <div className="absolute top-3 left-3 flex items-center gap-1.5 glass px-3 py-1.5 rounded-full">
+                    <Icon className="w-3.5 h-3.5 text-gold" />
+                    <span className="text-xs font-medium text-white uppercase tracking-wider">
                       {categoryLabels[villa.category]}
                     </span>
                   </div>
 
-                  {/* Features pills */}
-                  <div className="absolute bottom-4 left-4 right-4 flex gap-2 flex-wrap">
+                  <div className="absolute bottom-3 left-3 right-3 flex gap-2 flex-wrap">
                     {villa.hasPool && (
-                      <span className="text-[10px] bg-gold/90 text-navy font-medium px-2 py-0.5 rounded-sm uppercase">
+                      <span className="text-[10px] bg-gold/90 text-navy font-medium px-2 py-0.5 rounded-full uppercase">
                         Private Pool
                       </span>
                     )}
-                    {villa.hasWhirlpool && (
-                      <span className="text-[10px] bg-gold/90 text-navy font-medium px-2 py-0.5 rounded-sm uppercase">
-                        Whirlpool
-                      </span>
-                    )}
-                    <span className="text-[10px] bg-white/80 text-navy font-medium px-2 py-0.5 rounded-sm uppercase">
+                    <span className="text-[10px] bg-white/80 text-navy font-medium px-2 py-0.5 rounded-full uppercase">
                       {villa.size}
                     </span>
                   </div>
@@ -103,7 +96,7 @@ export default function VillaShowcase() {
                     {villa.tagline}
                   </p>
                   <div className="flex items-center text-gold text-sm font-medium">
-                    View rates
+                    View Details
                     <ArrowRight className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" />
                   </div>
                 </div>

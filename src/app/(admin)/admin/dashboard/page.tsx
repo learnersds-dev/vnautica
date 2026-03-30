@@ -73,7 +73,7 @@ export default function AdminDashboard() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-2xl font-serif text-navy">Dashboard</h1>
-          <p className="text-gray-500 text-sm">Villa Nautica — Reservation Management</p>
+          <p className="text-gray-500 text-sm">Reservations & Sales — Villa Nautica Bookings</p>
         </div>
         <div className="flex gap-3">
           <Button variant="outline" size="sm" onClick={triggerScrape} disabled={scraping}>

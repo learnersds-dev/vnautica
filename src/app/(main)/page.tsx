@@ -11,10 +11,10 @@ export default function HomePage() {
     <>
       <Hero />
       <TransferBanner />
-      <VillaShowcase />
-      <ExperiencesSection />
-      <DiningSection />
-      <SpaSection />
+      <VillaShowcase teaser />
+      <ExperiencesSection teaser />
+      <DiningSection teaser />
+      <SpaSection teaser />
       <CTASection />
     </>
   );

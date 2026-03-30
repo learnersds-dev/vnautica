@@ -17,33 +17,31 @@ export default function CTASection() {
         <div className="absolute inset-0 bg-navy-dark/70" />
       </div>
 
-      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center text-white">
-        <span className="text-gold text-xs uppercase tracking-[0.3em] font-medium">Limited Time Offer</span>
-        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl mt-4 mb-6">
-          Save 9% on Every Villa
-        </h2>
-        <p className="text-white/70 text-lg mb-4 leading-relaxed">
-          Book directly with us and enjoy exclusive rates not available on any other platform.
-          Our dedicated reservation team is ready to craft your perfect Maldivian escape.
-        </p>
-        <p className="text-gold text-sm mb-8">
-          Includes complimentary breakfast, speedboat transfers, and a sunset champagne experience.
-        </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link href="/villas">
-            <Button variant="gold" size="lg">
-              View Live Rates
-            </Button>
-          </Link>
-          <a href="tel:+9606641010">
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-white/40 text-white hover:bg-white/10 hover:border-white"
-            >
-              Call +960 664 1010
-            </Button>
-          </a>
+      <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
+        <div className="glass rounded-sm px-8 py-12 lg:px-12 lg:py-16 glass-shimmer">
+          <span className="text-gold text-xs uppercase tracking-[0.3em] font-medium">Reservations & Sales</span>
+          <h2 className="font-serif text-4xl md:text-5xl text-white mt-4 mb-6">
+            Exclusive Rates Through Us
+          </h2>
+          <p className="text-white/60 text-lg mb-8 leading-relaxed">
+            Book Villa Nautica through Reservations & Sales for guaranteed best rates on every villa.
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <Link href="/villas">
+              <Button variant="gold" size="lg">
+                View Live Rates
+              </Button>
+            </Link>
+            <a href="tel:+9606641010">
+              <Button
+                variant="outline"
+                size="lg"
+                className="border-white/40 text-white hover:bg-white/10 hover:border-white"
+              >
+                Call +960 664 1010
+              </Button>
+            </a>
+          </div>
         </div>
       </div>
     </section>

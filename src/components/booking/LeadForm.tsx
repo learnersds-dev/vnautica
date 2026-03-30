@@ -264,7 +264,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
           className="mt-1 w-4 h-4 accent-gold"
         />
         <span className="text-xs text-gray-400 leading-relaxed">
-          I agree to receive exclusive offers and travel inspiration from Villa Nautica. You can unsubscribe at any time.
+          I agree to receive exclusive offers and travel updates from Reservations & Sales regarding Villa Nautica. You can unsubscribe at any time.
         </span>
       </label>
 

@@ -11,7 +11,7 @@ const features = [
 
 export default function TransferBanner() {
   return (
-    <section className="bg-navy-light py-6 border-y border-white/5">
+    <section className="glass py-6 border-y border-white/5 bg-navy-light">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {features.map((f) => (

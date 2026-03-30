@@ -23,8 +23,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <Link href="/admin/dashboard" className="flex items-center gap-2">
             <Anchor className="w-6 h-6 text-gold" />
             <div>
-              <div className="font-serif text-lg font-semibold">Villa Nautica</div>
-              <div className="text-[9px] text-white/40 uppercase tracking-widest">Admin Portal</div>
+              <div className="font-serif text-lg font-semibold">R&S Admin</div>
+              <div className="text-[9px] text-white/40 uppercase tracking-widest">Villa Nautica Bookings</div>
             </div>
           </Link>
         </div>

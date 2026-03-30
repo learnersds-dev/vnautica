@@ -10,9 +10,9 @@ export default function ContactPage() {
       <section className="bg-navy text-white py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <span className="text-gold text-xs uppercase tracking-[0.3em]">Contact</span>
-          <h1 className="font-serif text-4xl md:text-5xl mt-3 mb-4">Get in Touch</h1>
+          <h1 className="font-serif text-4xl md:text-5xl mt-3 mb-4">Contact Our Booking Team</h1>
           <p className="text-white/60 text-lg">
-            Our dedicated reservation team is available 24/7 to assist with your Maldives escape.
+            Reservations & Sales — dedicated booking partner for Villa Nautica Maldives.
           </p>
         </div>
       </section>
@@ -68,9 +68,9 @@ export default function ContactPage() {
                   <MapPin className="w-5 h-5 text-gold" />
                 </div>
                 <div>
-                  <h3 className="text-navy font-medium mb-1">Resort Address</h3>
+                  <h3 className="text-navy font-medium mb-1">Resort Location</h3>
                   <p className="text-gray-600">
-                    Villa Nautica Maldives Resort<br />
+                    Villa Nautica Maldives<br />
                     Paradise Island (Lankanfinolhu)<br />
                     North Malé Atoll, Maldives
                   </p>
@@ -78,14 +78,14 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Powered by R&S */}
+            {/* R&S Disclosure */}
             <div className="mt-10 p-4 bg-navy rounded-sm">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-cyan-400 text-xs font-semibold">Reservations & Sales</span>
                 <span className="text-white/30 text-xs">— Official Booking Partner</span>
               </div>
               <p className="text-white/50 text-xs leading-relaxed">
-                All enquiries are managed by Reservations & Sales, the exclusive booking partner for Villa Nautica.
+                All enquiries are managed by Reservations & Sales, the official booking partner for Villa Nautica.
                 Enjoy best rate guarantee and personalized service.
               </p>
             </div>

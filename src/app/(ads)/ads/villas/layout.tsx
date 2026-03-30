@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Villa Nautica Maldives | Save 9% — Exclusive Direct Rates',
+  title: 'Book Villa Nautica | Save 9% — Reservations & Sales',
   description:
-    'Book direct and save 9% on luxury overwater and beach villas at Villa Nautica, Paradise Island, Maldives. Live rates, free cancellation, complimentary speedboat transfer.',
+    'Save 9% on luxury villas at Villa Nautica through Reservations & Sales. Live rates, free cancellation, complimentary speedboat transfer.',
   robots: 'noindex, nofollow',
 };
 

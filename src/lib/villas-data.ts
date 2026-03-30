@@ -103,7 +103,7 @@ export const villas: Villa[] = [
     slug: 'sunset-beach-pool-villa',
     category: 'beach',
     tagline: 'Golden hour, every hour',
-    description: 'Enjoy the romance of the western Maldivian sunset from your private beach villa. With a plunge pool, outdoor terrace, and elegant interiors inspired by yacht-life living, this villa captures the essence of Villa Nautica.',
+    description: 'Enjoy the romance of the western Maldivian sunset from your private beach villa. With a plunge pool, outdoor terrace, and elegant interiors inspired by yacht-life living, this villa captures the essence of the resort.',
     features: ['Sunset views', 'Private plunge pool', 'Beach access', 'Outdoor terrace', 'Nautical-inspired decor', 'Rain shower', 'Espresso machine'],
     maxGuests: 3,
     bedrooms: 1,
@@ -213,7 +213,7 @@ export const diningVenues: DiningVenue[] = [
     id: 'captains-bar',
     name: 'Captain\'s Bar',
     cuisine: 'Cocktails & Tapas',
-    description: 'The social heart of Villa Nautica, this nautical-themed bar serves signature cocktails, fine wines, and tapas in a glamorous atmosphere reminiscent of a luxury yacht club.',
+    description: 'The social heart of the resort, this nautical-themed bar serves signature cocktails, fine wines, and tapas in a glamorous atmosphere reminiscent of a luxury yacht club.',
     image: '/dining/captains-bar.jpg',
     hours: '5:00 PM – 12:00 AM',
     highlight: 'Signature rum cocktails',
@@ -264,6 +264,14 @@ export const experiences: Experience[] = [
     category: 'culture',
   },
 ];
+
+export const AGENT_INFO = {
+  name: 'Reservations & Sales',
+  tagline: 'Official Booking Partner',
+  copyright: 'Reservations & Sales',
+  phone: '+960 664 1010',
+  email: 'reservations@villanautica.com',
+};
 
 export const RESORT_INFO = {
   name: 'Villa Nautica',

@@ -11,7 +11,7 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-const FROM_NAME = 'Villa Nautica Reservations';
+const FROM_NAME = 'Reservations & Sales';
 const FROM_EMAIL = process.env.SMTP_FROM || 'reservations@villanautica.com';
 
 function escapeHtml(str: string): string {
@@ -52,17 +52,16 @@ function baseTemplate(content: string): string {
       <span>RESERVATIONS & SALES</span>
     </div>
     <div class="header">
-      <h1>Villa Nautica</h1>
-      <p>PARADISE ISLAND, MALDIVES</p>
+      <h1>Reservations &amp; Sales</h1>
+      <p>BOOKING PARTNER FOR VILLA NAUTICA MALDIVES</p>
     </div>
     <div class="body">
       ${content}
     </div>
     <div class="footer">
-      <p>Villa Nautica Maldives Resort</p>
-      <p>Paradise Island, North Malé Atoll, Maldives</p>
+      <p>Reservations &amp; Sales — Official Booking Partner</p>
+      <p>Villa Nautica, Paradise Island, North Malé Atoll, Maldives</p>
       <p><a href="tel:+9606641010">+960 664 1010</a> | <a href="mailto:reservations@villanautica.com">reservations@villanautica.com</a></p>
-      <p style="margin-top: 12px; font-size: 9px;">Powered by Reservations & Sales</p>
     </div>
   </div>
 </body>
@@ -74,7 +73,7 @@ function baseTemplate(content: string): string {
 function enquiryConfirmationTemplate(customer: Customer, booking: Booking): string {
   return baseTemplate(`
     <h2>Thank You, ${escapeHtml(customer.firstName)}</h2>
-    <p>We're delighted you're considering Villa Nautica for your Maldives escape. Your enquiry has been received and our dedicated reservation specialist will craft a personalized proposal for you.</p>
+    <p>Thank you for choosing to book Villa Nautica through Reservations &amp; Sales. Your enquiry has been received and our booking specialist will craft a personalized proposal for you.</p>
 
     <div class="divider"></div>
 
@@ -113,7 +112,7 @@ function enquiryConfirmationTemplate(customer: Customer, booking: Booking): stri
 function followUpTemplate(customer: Customer): string {
   return baseTemplate(`
     <h2>Hello ${escapeHtml(customer.firstName)},</h2>
-    <p>We noticed you recently explored Villa Nautica and wanted to make sure we haven't missed your enquiry.</p>
+    <p>We noticed you recently enquired about Villa Nautica through us and wanted to follow up.</p>
     <p>As a special gesture, we'd like to extend an <strong>exclusive offer</strong>:</p>
 
     <div style="background: #F5F0E8; padding: 20px; text-align: center; margin: 20px 0;">
@@ -159,7 +158,7 @@ export async function sendEnquiryConfirmation(customer: Customer, booking: Booki
       logEmail({
         customerId: customer.id,
         to: customer.email,
-        subject: 'Your Villa Nautica Enquiry',
+        subject: '[R&S] Your Villa Nautica Booking Enquiry',
         template: 'enquiry-confirmation',
         status: 'pending',
         sentAt: new Date().toISOString(),
@@ -170,14 +169,14 @@ export async function sendEnquiryConfirmation(customer: Customer, booking: Booki
     await transporter.sendMail({
       from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
       to: customer.email,
-      subject: `Your Villa Nautica Enquiry — ${booking.villaName}`,
+      subject: `[R&S] Your Villa Nautica Booking Enquiry — ${booking.villaName}`,
       html: enquiryConfirmationTemplate(customer, booking),
     });
 
     logEmail({
       customerId: customer.id,
       to: customer.email,
-      subject: `Your Villa Nautica Enquiry — ${booking.villaName}`,
+      subject: `[R&S] Your Villa Nautica Booking Enquiry — ${booking.villaName}`,
       template: 'enquiry-confirmation',
       status: 'sent',
       sentAt: new Date().toISOString(),
@@ -188,7 +187,7 @@ export async function sendEnquiryConfirmation(customer: Customer, booking: Booki
     logEmail({
       customerId: customer.id,
       to: customer.email,
-      subject: 'Your Villa Nautica Enquiry',
+      subject: '[R&S] Your Villa Nautica Booking Enquiry',
       template: 'enquiry-confirmation',
       status: 'failed',
       sentAt: new Date().toISOString(),
@@ -203,7 +202,7 @@ export async function sendFollowUp(customer: Customer): Promise<boolean> {
       logEmail({
         customerId: customer.id,
         to: customer.email,
-        subject: 'Your Exclusive Villa Nautica Offer Awaits',
+        subject: '[R&S] Exclusive Villa Nautica Rates for You',
         template: 'follow-up',
         status: 'pending',
         sentAt: new Date().toISOString(),
@@ -214,14 +213,14 @@ export async function sendFollowUp(customer: Customer): Promise<boolean> {
     await transporter.sendMail({
       from: `"${FROM_NAME}" <${FROM_EMAIL}>`,
       to: customer.email,
-      subject: 'Your Exclusive Villa Nautica Offer Awaits',
+      subject: '[R&S] Exclusive Villa Nautica Rates for You',
       html: followUpTemplate(customer),
     });
 
     logEmail({
       customerId: customer.id,
       to: customer.email,
-      subject: 'Your Exclusive Villa Nautica Offer Awaits',
+      subject: '[R&S] Exclusive Villa Nautica Rates for You',
       template: 'follow-up',
       status: 'sent',
       sentAt: new Date().toISOString(),
@@ -249,7 +248,7 @@ export async function sendInternalNotification(customer: Customer, booking: Book
     }
 
     await transporter.sendMail({
-      from: `"Villa Nautica CRM" <${FROM_EMAIL}>`,
+      from: `"Reservations & Sales CRM" <${FROM_EMAIL}>`,
       to: internalEmail,
       subject: `[NEW LEAD] ${customer.firstName} ${customer.lastName} — ${booking.villaName}`,
       html: internalNotificationTemplate(customer, booking),
