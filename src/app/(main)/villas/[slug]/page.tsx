@@ -1,7 +1,7 @@
 'use client';
 
 import { useParams } from 'next/navigation';
-import { use, useState } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Check, MapPin, Users, Maximize, Bed } from 'lucide-react';
 import { villas } from '@/lib/villas-data';
@@ -130,7 +130,7 @@ export default function VillaDetailPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-navy-dark/60 backdrop-blur-sm" onClick={() => setShowForm(false)} />
           <div className="relative bg-white rounded-sm shadow-2xl max-w-lg w-full max-h-[90vh] overflow-y-auto p-8 animate-fade-in-up">
-            <button onClick={() => setShowForm(false)} className="absolute top-4 right-4 text-gray-400 hover:text-navy text-2xl">&times;</button>
+            <button onClick={() => setShowForm(false)} className="absolute top-4 right-4 text-gray-400 hover:text-navy text-2xl" aria-label="Close enquiry form">&times;</button>
             <LeadForm preselectedVilla={villa.id} compact source="villa-detail" />
           </div>
         </div>

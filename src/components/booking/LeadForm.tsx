@@ -15,6 +15,7 @@ interface LeadFormProps {
 export default function LeadForm({ preselectedVilla, compact = false, source = 'website' }: LeadFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
   const [form, setForm] = useState<Partial<LeadFormData>>({
     villaPreference: preselectedVilla || '',
     adults: 2,
@@ -50,27 +51,31 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
 
     // POST to backend CRM
     try {
-      await fetch('/api/leads', {
+      const res = await fetch('/api/leads', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
+
+      if (!res.ok) throw new Error(`Server error: ${res.status}`);
+
+      // Fire Google Ads conversion tracking
+      if (typeof window !== 'undefined' && 'gtag' in window) {
+        const w = window as unknown as { gtag: (...args: unknown[]) => void };
+        w.gtag('event', 'conversion', {
+          send_to: 'AW-XXXXXXXXX/XXXXXXXX',
+          value: 1.0,
+          currency: 'USD',
+        });
+      }
+
+      setSubmitting(false);
+      setSubmitted(true);
     } catch (err) {
       console.error('Lead submission error:', err);
+      setSubmitting(false);
+      setError(true);
     }
-
-    // Fire Google Ads conversion tracking
-    if (typeof window !== 'undefined' && 'gtag' in window) {
-      const w = window as unknown as { gtag: (...args: unknown[]) => void };
-      w.gtag('event', 'conversion', {
-        send_to: 'AW-XXXXXXXXX/XXXXXXXX',
-        value: 1.0,
-        currency: 'USD',
-      });
-    }
-
-    setSubmitting(false);
-    setSubmitted(true);
   };
 
   if (submitted) {
@@ -107,7 +112,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             required
             value={form.firstName || ''}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
             placeholder="Your first name"
           />
         </div>
@@ -119,7 +124,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             required
             value={form.lastName || ''}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
             placeholder="Your last name"
           />
         </div>
@@ -135,7 +140,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             required
             value={form.email || ''}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
             placeholder="your@email.com"
           />
         </div>
@@ -146,7 +151,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             name="phone"
             value={form.phone || ''}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
             placeholder="+1 234 567 8900"
           />
         </div>
@@ -163,7 +168,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             value={form.checkIn || ''}
             onChange={handleChange}
             min={new Date().toISOString().split('T')[0]}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
           />
         </div>
         <div>
@@ -175,7 +180,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             value={form.checkOut || ''}
             onChange={handleChange}
             min={form.checkIn || new Date().toISOString().split('T')[0]}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors"
           />
         </div>
       </div>
@@ -188,7 +193,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             name="villaPreference"
             value={form.villaPreference || ''}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors bg-white"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors bg-white"
           >
             <option value="">Any villa</option>
             {villas.map((v) => (
@@ -202,7 +207,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             name="adults"
             value={form.adults}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors bg-white"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors bg-white"
           >
             {[1, 2, 3, 4, 5, 6].map((n) => (
               <option key={n} value={n}>{n} Adult{n > 1 ? 's' : ''}</option>
@@ -215,7 +220,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             name="children"
             value={form.children}
             onChange={handleChange}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors bg-white"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors bg-white"
           >
             {[0, 1, 2, 3, 4].map((n) => (
               <option key={n} value={n}>{n} Child{n !== 1 ? 'ren' : ''}</option>
@@ -233,7 +238,7 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
             value={form.specialRequests || ''}
             onChange={handleChange}
             rows={3}
-            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:border-gold transition-colors resize-none"
+            className="w-full px-4 py-3 border border-gray-200 rounded-sm text-navy focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold transition-colors resize-none"
             placeholder="Honeymoon celebration, dietary requirements, transfer preferences..."
           />
         </div>
@@ -273,6 +278,12 @@ export default function LeadForm({ preselectedVilla, compact = false, source = '
           </>
         )}
       </Button>
+
+      {error && (
+        <p className="text-sm text-red-500 text-center">
+          Something went wrong. Please try again or call +960 664 1010 directly.
+        </p>
+      )}
 
       <p className="text-[10px] text-gray-400 text-center">
         No payment required. Free cancellation. Our team responds within 2 hours.

@@ -141,6 +141,7 @@ export default function AdsVillasPage() {
 
             {/* Right — Lead Form (above the fold) */}
             <div
+              id="enquiry-form"
               className={`bg-white rounded-sm shadow-2xl p-6 lg:p-8 transition-all duration-700 delay-300 ${
                 loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
               }`}
@@ -208,7 +209,7 @@ export default function AdsVillasPage() {
       </section>
 
       {/* Bottom CTA */}
-      <section id="enquiry-form" className="py-12 bg-white">
+      <section className="py-12 bg-white">
         <div className="max-w-lg mx-auto px-6">
           <div className="text-center mb-6">
             <h2 className="font-serif text-2xl text-navy">Get Your Exclusive Rate</h2>
